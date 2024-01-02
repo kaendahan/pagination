@@ -2,9 +2,16 @@
   "name": "@kaendahan/react-pagination",
   "version": "1.0.0",
   "description": "A ReactJS component that creates a pagination.",
+  "keywords": [
+    "react-component",
+    "paginate",
+    "paginator",
+    "pagination"
+  ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c --bundleConfigAsCjs",
+    "build:lib": "rm -rf dist && rm -rf types && rollup -c --bundleConfigAsCjs"
   },
   "repository": {
     "type": "git",
