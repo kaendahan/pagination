@@ -1,0 +1,19 @@
+{
+  "name": "@kaendahan/react-pagination",
+  "version": "1.0.0",
+  "description": "A ReactJS component that creates a pagination.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaendahan/pagination.git"
+  },
+  "author": "kaendahan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaendahan/pagination/issues"
+  },
+  "homepage": "https://github.com/kaendahan/pagination#readme"
+}
