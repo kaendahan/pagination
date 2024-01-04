@@ -1,6 +1,6 @@
 {
   "name": "@kaendahan/react-pagination",
-  "version": "0.1.0-beta.0",
+  "version": "0.0.0",
   "description": "A ReactJS component that creates a pagination.",
   "keywords": [
     "react-component",

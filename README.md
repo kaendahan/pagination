@@ -1,7 +1,3 @@
-Tentu, berikut adalah dokumentasi dalam format Markdown (.md) untuk paket npm "@kaendahan/react-pagination" berdasarkan informasi yang Anda berikan:
-
----
-
 # @kaendahan/react-pagination
 
 **Versi Terbaru:** [![npm version](https://badge.fury.io/js/%40kaendahan%2Freact-pagination.svg)](https://www.npmjs.com/package/@kaendahan/react-pagination)
@@ -13,6 +9,8 @@ Paket paginasi React yang menggunakan Tailwind CSS. Memerlukan Tailwind CSS mini
 ```bash
 npm install @kaendahan/react-pagination
 ```
+
+Untuk menggunakan paket ini, pastikan Anda sudah menginstal Tailwind CSS. Untuk panduan instalasi Tailwind CSS dengan versi minimal 3.4.0, silakan lihat [dokumentasi resmi Tailwind CSS](https://tailwindcss.com/docs/installation/framework-guides) untuk informasi lebih lanjut.
 
 ## Penggunaan
 
@@ -67,7 +65,11 @@ interface PaginationProps extends IPaginationBaseProps {
 import color from "tailwindcss/colors";
 
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    // ... Other code lines
+    "node_modules/@kaendahan/react-pagination/*.js"
+    // ... Other code LINES
+    ],
   theme: {
     extend: {
       colors: {
