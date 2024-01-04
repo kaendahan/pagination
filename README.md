@@ -1,91 +1,96 @@
-import pkg from "./package.json" assert { type: "json" };
-import { dts } from "rollup-plugin-dts";
-import typescript from "rollup-plugin-typescript2";
-// import typescript from "@rollup/plugin-typescript";
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import terser from "@rollup/plugin-terser";
-import filesize from "rollup-plugin-filesize";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import generatePackageJson from "rollup-plugin-generate-package-json";
-import copy from "rollup-plugin-copy";
+Tentu, berikut adalah dokumentasi dalam format Markdown (.md) untuk paket npm "@kaendahan/react-pagination" berdasarkan informasi yang Anda berikan:
 
-const DIST_PATH = "./dist";
-const external = Object.keys(pkg.peerDependencies);
-/**
- * @type {import('rollup').RollupOptions}
- */
+---
 
-export default [
-  {
-    input: "./src/index.ts",
-    output: [
-      {
-        file: `${DIST_PATH}/index.cjs.js`,
-        format: "cjs",
-        // sourcemap: true,
-      },
-      {
-        file: `${DIST_PATH}/index.esm.js`,
-        format: "esm",
-        // sourcemap: true,
-      },
-    ],
-    external,
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      typescript({
-        tsconfig: "./tsconfig.json",
-        useTsconfigDeclarationDir: true,
-      }),
-      terser(),
-      generatePackageJson({
-        baseContents: {
-          name: pkg.name,
-          author: pkg.author,
-          version: pkg.version,
-          description: pkg.description,
-          keywords: pkg.keywords,
-          license: pkg.license,
-          repository: pkg.repository,
-          homepage: pkg.homepage,
-          bugs: pkg.bugs,
-          publishConfig: pkg.publishConfig,
-          peerDependencies: pkg.peerDependencies,
-          main: "./index.cjs.js",
-          module: "./index.esm.js",
-          types: "./index.d.ts",
-          scripts: {
-            test: 'echo "Error: no test specified" && exit 1',
-          },
+# @kaendahan/react-pagination
+
+**Versi Terbaru:** [![npm version](https://badge.fury.io/js/%40kaendahan%2Freact-pagination.svg)](https://www.npmjs.com/package/@kaendahan/react-pagination)
+
+Paket paginasi React yang menggunakan Tailwind CSS. Memerlukan Tailwind CSS minimal versi 3.4.0 dan React versi minimal 18.2.0.
+
+## Instalasi
+
+```bash
+npm install @kaendahan/react-pagination
+```
+
+## Penggunaan
+
+```javascript
+import { Pagination, PaginationSimple } from '@kaendahan/react-pagination';
+
+// Contoh Penggunaan
+const MyComponent = () => {
+  return (
+    <div>
+      <Pagination total={100} current={1} onChangePage={(page, pageSize) => console.log(page, pageSize)} />
+      <!-- atau -->
+      <PaginationSimple total={50} current={2} />
+    </div>
+  );
+};
+```
+
+## Properti
+
+### Pagination
+
+```javascript
+interface PaginationProps extends IPaginationBaseProps {
+    skipPage?: number;
+}
+```
+
+### PaginationSimple
+
+```javascript
+interface IPaginationBaseProps extends PaginationVariantProps {
+    disabled?: boolean;
+    size?: TSize;
+    shape?: TShape;
+    className?: string;
+    total?: number;
+    current?: number;
+    pageSize?: number;
+    onChangePage?: (page: number, pageSize: number) => void;
+    itemRender?: (page: number, type: "page" | "prev" | "next" | "skip-prev" | "skip-next", element: ReactNode) => ReactNode;
+}
+
+interface PaginationProps extends IPaginationBaseProps {
+    skipPage?: number;
+}
+```
+
+## Konfigurasi Tailwind CSS
+
+```javascript
+import color from "tailwindcss/colors";
+
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: color.blue[700],
+          light: color.blue[50],
+          emphasis: color.white,
         },
-      }),
-      copy({
-        targets: [
-          {
-            src: "./LICENSE",
-            dest: `${DIST_PATH}`,
-          },
-          {
-            src: "./README.md",
-            dest: `${DIST_PATH}`,
-          },
-        ],
-      }),
-      filesize(),
-    ],
-  },
-  {
-    input: "./types/index.d.ts",
-    output: [
-      {
-        file: `${DIST_PATH}/index.d.ts`,
-        format: "esm",
+        secondary: {
+          DEFAULT: color.gray[800],
+          emphasis: color.white,
+        },
+        gray: {
+          DEFAULT: color.gray[700],
+          subtle: color.gray[400],
+        },
       },
-    ],
-    plugins: [dts()],
-    external,
+    },
   },
-];
+  plugins: [],
+};
+```
+
+## Lisensi
+
+MIT License
