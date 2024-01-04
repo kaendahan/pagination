@@ -1,6 +1,6 @@
 {
   "name": "@kaendahan/react-pagination",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A ReactJS component that creates a pagination.",
   "keywords": [
     "react-component",
@@ -8,19 +8,61 @@
     "paginator",
     "pagination"
   ],
-  "main": "index.js",
-  "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
-    "build:lib": "rm -rf dist && rm -rf types && rollup -c --bundleConfigAsCjs"
-  },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaendahan/pagination.git"
   },
   "author": "kaendahan",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/kaendahan/pagination/issues"
   },
-  "homepage": "https://github.com/kaendahan/pagination#readme"
+  "homepage": "https://github.com/kaendahan/pagination#readme",
+  "scripts": {
+    "dev": "vite",
+    "build": "rimraf dist && rimraf types && rollup -c --bundleConfigAsCjs",
+    "lint": "eslint ./src/lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-filesize": "^10.0.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
 }
